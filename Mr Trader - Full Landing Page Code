@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mr Trader - Best Trading Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { --main-color: #ffc107; --bg-dark: #121212; --card-bg: #1e1e1e; }
+        body { margin: 0; background-color: var(--bg-dark); color: white; font-family: 'Segoe UI', sans-serif; }
+        
+        /* হেডার ও ব্যালেন্স */
+        header { background: var(--main-color); padding: 15px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+        .logo { font-size: 22px; font-weight: bold; color: black; text-transform: uppercase; }
+        .wallet { background: black; color: var(--main-color); padding: 5px 15px; border-radius: 20px; font-weight: bold; }
+
+        /* ব্যানার */
+        .promo-banner { background: linear-gradient(45deg, #222, #444); margin: 15px; padding: 30px; border-radius: 15px; text-align: center; border: 1px solid var(--main-color); }
+
+        /* মেনু গ্রিড */
+        .menu-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; padding: 15px; text-align: center; }
+        .menu-item { font-size: 12px; color: #ccc; cursor: pointer; }
+        .menu-item i { font-size: 24px; color: var(--main-color); display: block; margin-bottom: 5px; }
+
+        /* গেম সেকশন */
+        .game-area { padding: 15px; }
+        .game-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .game-card { background: var(--card-bg); border-radius: 12px; overflow: hidden; position: relative; border: 1px solid #333; }
+        .game-card img { width: 100%; height: 110px; object-fit: cover; opacity: 0.8; }
+        .game-label { position: absolute; bottom: 0; width: 100%; background: rgba(0,0,0,0.7); text-align: center; padding: 5px 0; font-size: 13px; }
+
+        /* পেমেন্ট উইন্ডো */
+        .payment-modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 2000; align-items: center; justify-content: center; }
+        .modal-box { background: #222; width: 90%; max-width: 400px; padding: 20px; border-radius: 15px; border: 1px solid var(--main-color); }
+        .pay-method { background: #333; padding: 12px; margin: 10px 0; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; }
+        .pay-method strong { color: var(--main-color); }
+        input { width: 100%; padding: 12px; margin: 10px 0; background: #000; border: 1px solid #444; color: white; border-radius: 5px; box-sizing: border-box; }
+        .confirm-btn { background: var(--main-color); color: black; width: 100%; padding: 12px; border: none; font-weight: bold; border-radius: 5px; cursor: pointer; }
+
+        /* বটম ন্যাভ */
+        .bottom-nav { position: fixed; bottom: 0; width: 100%; background: #000; display: flex; justify-content: space-around; padding: 10px 0; border-top: 1px solid #333; }
+        .nav-link { color: #888; text-decoration: none; font-size: 11px; text-align: center; }
+        .nav-link.active { color: var(--main-color); }
+        .nav-link i { font-size: 20px; display: block; margin-bottom: 2px; }
+
+        /* ফ্লোটিং ভিডিও (আপনার চাহিদামত) */
+        #floatingVid { position: fixed; bottom: 80px; left: 10px; width: 120px; border: 2px solid var(--main-color); border-radius: 8px; z-index: 500; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">Mr Trader</div>
+    <div class="wallet">৳ <span id="balance">0.00</span></div>
+</header>
+
+<div class="promo-banner">
+    <h2 style="margin:0;">স্বাগতম Mr Trader-এ</h2>
+    <p style="color:var(--main-color); font-size:14px;">সবচেয়ে দ্রুত ডিপোজিট ও উইথড্রল</p>
+</div>
+
+<div class="menu-grid">
+    <div class="menu-item" onclick="openModal()"><i class="fas fa-plus-circle"></i>ডিপোজিট</div>
+    <div class="menu-item"><i class="fas fa-minus-circle"></i>উইথড্র</div>
+    <div class="menu-item"><i class="fas fa-gift"></i>বোনাস</div>
+    <div class="menu-item" onclick="window.location.href='https://t.me/Mr_Mubarak_247'"><i class="fab fa-telegram"></i>হেল্প সেন্টার</div>
+</div>
+
+<div class="game-area">
+    <h3>পপুলার গেমস</h3>
+    <div class="game-grid">
+        <div class="game-card"><img src="https://via.placeholder.com/150/222/ffc107?text=Fortune+Gems"><div class="game-label">Fortune Gems</div></div>
+        <div class="game-card"><img src="https://via.placeholder.com/150/222/ffc107?text=Aviator"><div class="game-label">Aviator</div></div>
+        <div class="game-card"><img src="https://via.placeholder.com/150/222/ffc107?text=WinGo"><div class="game-label">WinGo 1m</div></div>
+        <div class="game-card"><img src="https://via.placeholder.com/150/222/ffc107?text=Mines"><div class="game-label">Mines</div></div>
+    </div>
+</div>
+
+<video id="floatingVid" autoplay muted loop playsinline>
+    <source src="https://mubarak776.github.io/Mr_win_09/1000006395.mp4" type="video/mp4">
+</video>
+
+<div class="payment-modal" id="payModal">
+    <div class="modal-box">
+        <span style="float:right; cursor:pointer; color:red" onclick="closeModal()">X</span>
+        <h3>ডিপোজিট করুন</h3>
+        <div class="pay-method">
+            <span>বিকাশ পার্সোনাল:</span>
+            <strong>01873046713</strong>
+        </div>
+        <div class="pay-method">
+            <span>নগদ পার্সোনাল:</span>
+            <strong>01863796311</strong>
+        </div>
+        <input type="number" placeholder="টাকার পরিমাণ (৳)">
+        <input type="text" placeholder="Transaction ID (TrxID)">
+        <button class="confirm-btn" onclick="alert('রিকোয়েস্ট সফল হয়েছে! অ্যাডমিন চেক করে ব্যালেন্স যোগ করবে।')">কনফার্ম</button>
+    </div>
+</div>
+
+<nav class="bottom-nav">
+    <a href="#" class="nav-link active"><i class="fas fa-home"></i>হোম</a>
+    <a href="#" class="nav-item nav-link"><i class="fas fa-gamepad"></i>গেমস</a>
+    <a href="https://t.me/Mr_Mubarak_247" class="nav-link"><i class="fab fa-telegram-plane"></i>সাপোর্ট</a>
+    <a href="#" class="nav-link"><i class="fas fa-user"></i>প্রোফাইল</a>
+</nav>
+
+<script>
+    function openModal() { document.getElementById('payModal').style.display = 'flex'; }
+    function closeModal() { document.getElementById('payModal').style.display = 'none'; }
+</script>
+
+</body>
+</html>
